@@ -14,4 +14,4 @@ Instead of cmd+R to refresh, you can just press R to refresh the game (That's if
 3. You can set the timer of the health bar that is decreasing by the second in the setInterval(MinusHealth)
 
 
-...[Credit Tutorial & Muse :](http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/)
+[Credit Tutorial & Muse :](http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/)
