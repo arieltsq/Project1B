@@ -1,4 +1,6 @@
 @import url("_reset.css");
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
 html {
   background: url("images/space.gif");
   -webkit-background-size: cover;
@@ -6,12 +8,13 @@ html {
   -o-background-size: cover;
   background-size: cover;
 
-  font-family:'Lucida Grande';
-letter-spacing: 1px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 #middleContainer{
   /*margin-top: 50px;*/
-  height: 76px;
+  height: 25px;
   bottom: 10px;
   position: absolute;
   display: flex;
@@ -28,6 +31,7 @@ letter-spacing: 1px;
   /*margin: 0 auto;*/
 
   height: 100%;
+  margin-right:10px;
   /*width: 100px;*/
   background: rgba(255, 217, 0, 0.5);
   -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
@@ -42,6 +46,7 @@ letter-spacing: 1px;
   margin-right: 10px;
   font-weight: bolder;
   color: white;
+  font-size: 10px;
   text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
   #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased;
@@ -52,12 +57,13 @@ letter-spacing: 1px;
   /*background-color: rgba(255, 255, 255, 0.5);*/
   text-align: center;
   width: 100%;
-  height: 45%;
+  height: 20%;
   bottom: 0;
   left: 0;
   /*font-size: 50px;*/
   position: absolute;
   display: flex;
+  font-size: 12px;
 }
 #left_btm{
   flex: 1 0 200px;
@@ -69,10 +75,8 @@ h2{
   padding-top: 10px;
   margin-top: 50px;
   margin-left: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  /*color:rgba(0, 0, 0, 0.8);*/
-  background: rgba(255, 255, 255, 0.3);
-    color:white;
+  /*background: rgba(255, 255, 255, 0.3);*/
+  color:white;
   text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
   #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased;
@@ -84,7 +88,6 @@ h2{
 
 h3{
   /*color:rgba(0, 0, 0, 0.8);*/
-
   text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
   #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased;
@@ -95,7 +98,7 @@ h3{
   /*font-size: 50px;*/
   height:100%;
   font-weight: bolder;
-  background: rgba(0, 0, 0, 0.4);
+  /*background: rgba(0, 0, 0, 0.4);*/
   color:white;
 }
 

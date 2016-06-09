@@ -1,7 +1,7 @@
 /* Global $ */
 // Create the canvas
 var healthbar = $('#lifebar');
-var healthCounter = 1000;
+var healthCounter = window.innerWidth;
 
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
@@ -112,7 +112,7 @@ function UpdatedHealthBar () {
   flag = true;
 }
 
-// setInterval(MinusHealth, 10);
+setInterval(MinusHealth, 10);
 
 // Update game objects
 
@@ -129,7 +129,7 @@ function Update (modifier) {
     // this is when player is holding down
     // unicorn.y += unicorn.speed * modifier;
     unicorn.y += unicorn.speed * modifier;
-    var rockBottom = canvas.height - 60;
+    var rockBottom = canvas.height - 40;
     if (unicorn.y > rockBottom) {
       unicorn.y = rockBottom;
     }
@@ -146,7 +146,7 @@ function Update (modifier) {
   if (39 in keysDown) {
     // player holding right
     unicorn.x += unicorn.speed * modifier;
-    var rockRight = canvas.width - 60;
+    var rockRight = canvas.width - 40;
 
     if (unicorn.x > rockRight) {
       unicorn.x = rockRight;
@@ -168,8 +168,9 @@ function Update (modifier) {
   if (
 		unicorn.x <= (coins.x + 32) &&
      coins.x <= (unicorn.x + 32) && unicorn.y <= (coins.y + 32) && coins.y <= (unicorn.y + 32)) {
+    $('#coin').trigger("play");
     ++coinCaught;
-    healthCounter += 20;
+    healthCounter += 25;
     Reset();
   }
   for (var i = 0; i < policeArray.length; i++) {
@@ -240,7 +241,7 @@ function Main () {
 function checkBomb()
 {
   if (policeCaught) {
-    $('audio').trigger('play');
+    $('#bomb').trigger('play');
     playerLife--;
    setTimeout(function () {
      keysDown = {};
