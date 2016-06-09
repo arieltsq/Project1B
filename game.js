@@ -1,6 +1,7 @@
 /* Global $ */
 // Create the canvas
 var healthbar = $('#lifebar');
+var upBtn = $('#UpBtn');
 var healthCounter = window.innerWidth;
 
 var canvas = document.createElement('canvas');
@@ -8,7 +9,7 @@ var ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 400;
 // canvas.style = "border: 4px solid black; position:absolute; left: 31%; width: 1200px; height: 800px; margin-left: -250px; margin-top: 10px";
-canvas.style = ' position:absolute; width: 600px; height: 400px; margin-top: 50px; margin-left:auto; margin-right:auto; left:0; right:0; ';
+canvas.style = ' position:absolute; width: 600px; height: 400px; margin-top: 30px; margin-left:auto; margin-right:auto; left:0; right:0; ';
 // canvas.style = 'left: 50%; margin-left: 8% ';
 
 document.body.appendChild(canvas);
@@ -115,6 +116,7 @@ function UpdatedHealthBar () {
 setInterval(MinusHealth, 10);
 
 // Update game objects
+var Status = false;
 
 function Update (modifier) {
   if (38 in keysDown) {
@@ -248,7 +250,7 @@ function checkBomb()
      window.alert("You're left with : " + playerLife + ' lifes');
    }, 1000);
     healthCounter = 1000;
-    //window.alert("You're left with : " + playerLife + ' lifes' );
+    // window.alert("You're left with : " + playerLife + ' lifes' );
     policeArray = [];
   }
   if(playerLife <= 0) {
