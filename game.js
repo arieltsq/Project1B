@@ -5,10 +5,10 @@ var healthCounter = 1000;
 
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
-canvas.width = 1200;
-canvas.height = 800;
+canvas.width = 600;
+canvas.height = 400;
 // canvas.style = "border: 4px solid black; position:absolute; left: 31%; width: 1200px; height: 800px; margin-left: -250px; margin-top: 10px";
-canvas.style = ' position:absolute; width: 1400px; height: 900px; margin-top: 50px; margin-left:auto; margin-right:auto; left:0; right:0; ';
+canvas.style = ' position:absolute; width: 600px; height: 400px; margin-top: 50px; margin-left:auto; margin-right:auto; left:0; right:0; ';
 // canvas.style = 'left: 50%; margin-left: 8% ';
 
 document.body.appendChild(canvas);
@@ -89,23 +89,22 @@ function startGame () {
 }
 var flag = true;
 function MinusHealth () {
-  if(healthCounter > 0){
+  if (healthCounter > 0) {
     healthCounter--;
   }
-    if(healthCounter === 0) {
+    if (healthCounter === 0) {
       if (flag) {
-      flag = false;
-      window.alert("Boo! Unicorn dead :( ");
-      Reset();
-      playerLife = 3;
-      coinCaught = 0;
-      keysDown = {};
-      policeArray = [];
-      healthCounter = 1000;
+        flag = false;
+        window.alert('Boo! Unicorn dead :( ');
+        Reset();
+        playerLife = 3;
+        coinCaught = 0;
+        keysDown = {};
+        policeArray = [];
+        healthCounter = 1000;
+      }
     }
-   }
-console.log(healthCounter);
-   UpdatedHealthBar();
+  UpdatedHealthBar();
 }
 
 function UpdatedHealthBar () {
@@ -113,9 +112,7 @@ function UpdatedHealthBar () {
   flag = true;
 }
 
-setInterval(MinusHealth, 10);
-//clearInterval(intervalID);
-
+// setInterval(MinusHealth, 10);
 
 // Update game objects
 
@@ -156,13 +153,23 @@ function Update (modifier) {
     }
   }
 
+  if (82 in keysDown) {
+    flag = true;
+    Reset();
+    playerLife = 3;
+    coinCaught = 0;
+    keysDown = {};
+    policeArray = [];
+    healthCounter = 1000;
+  }
+
 // Have the unicorns ate the coins up?
 
   if (
 		unicorn.x <= (coins.x + 32) &&
      coins.x <= (unicorn.x + 32) && unicorn.y <= (coins.y + 32) && coins.y <= (unicorn.y + 32)) {
     ++coinCaught;
-   healthCounter += 10;
+    healthCounter += 20;
     Reset();
   }
   for (var i = 0; i < policeArray.length; i++) {
@@ -200,12 +207,12 @@ function Render () {
   //   ctx.drawImage(policeImage, bombs.x, bombs.y);
   // }
   for (var i = 0; i < policeArray.length; i++) {
-  ctx.drawImage(policeImage, policeArray[i].x, policeArray[i].y);
+    ctx.drawImage(policeImage, policeArray[i].x, policeArray[i].y);
   }
 
 
 
-  $('h2').text("Food Caught : " + coinCaught);
+  $('h2').text('Food Caught : ' + coinCaught);
    if (coinCaught <= 6){
      $('#Countstatus').text("Status: I could use some food");
      }
