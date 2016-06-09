@@ -71,7 +71,7 @@ addEventListener("keyup", function (e) {
 // Reset the game when the unicorn eats a seed
 
 function Reset () {
- // throw the monster somwehere on the screen randomly
+  // throw the monster somwehere on the screen randomly
 
   coins.x = 32 + (Math.random() * (canvas.width - 64));
   coins.y = 32 + (Math.random() * (canvas.height - 80));
@@ -93,18 +93,18 @@ function MinusHealth () {
   if (healthCounter > 0) {
     healthCounter--;
   }
-    if (healthCounter === 0) {
-      if (flag) {
-        flag = false;
-        window.alert('Boo! Unicorn dead :( ');
-        Reset();
-        playerLife = 3;
-        coinCaught = 0;
-        keysDown = {};
-        policeArray = [];
-        healthCounter = 1000;
-      }
+  if (healthCounter === 0) {
+    if (flag) {
+      flag = false;
+      window.alert('Boo! Unicorn dead :( ');
+      Reset();
+      playerLife = 3;
+      coinCaught = 0;
+      keysDown = {};
+      policeArray = [];
+      healthCounter = 1000;
     }
+  }
   UpdatedHealthBar();
 }
 
@@ -164,38 +164,36 @@ function Update (modifier) {
     policeArray = [];
     healthCounter = 1000;
   }
-
-// Have the unicorns ate the coins up?
-
+  // Have the unicorns ate the coins up?
   if (
-		unicorn.x <= (coins.x + 32) &&
-     coins.x <= (unicorn.x + 32) && unicorn.y <= (coins.y + 32) && coins.y <= (unicorn.y + 32)) {
-    $('#coin').trigger("play");
+    unicorn.x <= (coins.x + 32) &&
+    coins.x <= (unicorn.x + 32) && unicorn.y <= (coins.y + 32) && coins.y <= (unicorn.y + 32)) {
+   $('#coin').trigger("play");
     ++coinCaught;
     healthCounter += 25;
     Reset();
   }
   for (var i = 0; i < policeArray.length; i++) {
     if (
-		unicorn.x <= (policeArray[i].x + 32) &&
-     policeArray[i].x <= (unicorn.x + 32) && unicorn.y <= (policeArray[i].y + 32) && policeArray[i].y <= (unicorn.y + 32)) {
+        unicorn.x <= (policeArray[i].x + 32) &&
+        policeArray[i].x <= (unicorn.x + 32) && unicorn.y <= (policeArray[i].y + 32) && policeArray[i].y <= (unicorn.y + 32)) {
       policeCaught = true;
       policeArray.splice(i);
       checkBomb();
       Reset();
     }
   }
-  // if (
-  //   unicorn.x <= (bombs.x + 32) &&
-  //    bombs.x <= (unicorn.x + 32) && unicorn.y <= (bombs.y + 32) && bombs.y <= (unicorn.y + 32)) {
-  //   ++policeCaught;
-  //   checkBomb();
-  //   Reset();
-  // }
+      // if (
+      //   unicorn.x <= (bombs.x + 32) &&
+      //    bombs.x <= (unicorn.x + 32) && unicorn.y <= (bombs.y + 32) && bombs.y <= (unicorn.y + 32)) {
+      //   ++policeCaught;
+      //   checkBomb();
+      //   Reset();
+      // }
 }
 
-// Draw or rather show everything
-// We call this in the main function
+    // Draw or rather show everything
+    // We call this in the main function
 function Render () {
   if (bgReady) {
     ctx.drawImage(bgImage, 0, 0);
@@ -212,24 +210,11 @@ function Render () {
   for (var i = 0; i < policeArray.length; i++) {
     ctx.drawImage(policeImage, policeArray[i].x, policeArray[i].y);
   }
-
-
-
-  $('h2').text('Food Caught : ' + coinCaught);
-   if (coinCaught <= 6){
-     $('#Countstatus').text("Status: I could use some food");
-     }
-   else if (coinCaught < 9)
-   {
-     $('#Countstatus').text('Status: Yums! Could I have more?');
-   }
-   else  if (coinCaught > 30){
-     $('#Countstatus').text("Status: Thank you for the food!");
-   }
+   $('h2').text('Coins stole : ' + coinCaught);
    $('h3').text('Lives: ' + playerLife);
- }
+}
 
-// The main game loop
+    // The main game loop
 function Main () {
   var now = Date.now();
   var delta = now - then;
@@ -240,20 +225,19 @@ function Main () {
   // Request to do this again ASAP
   requestAnimationFrame(Main);
 }
-function checkBomb()
-{
+function checkBomb () {
   if (policeCaught) {
     $('#bomb').trigger('play');
     playerLife--;
-   setTimeout(function () {
-     keysDown = {};
-     window.alert("You're left with : " + playerLife + ' lifes');
-   }, 1000);
+    setTimeout(function () {
+      keysDown = {};
+      window.alert("You're left with : " + playerLife + ' lifes');
+    }, 1000);
     healthCounter = 1000;
     // window.alert("You're left with : " + playerLife + ' lifes' );
     policeArray = [];
   }
-  if(playerLife <= 0) {
+  if (playerLife <= 0) {
     window.alert("You've only one thing to do, and you can't do it well at all!");
     playerLife = 3;
     coinCaught = 0;
@@ -263,9 +247,7 @@ function checkBomb()
 // Cross-browser support for requestAnimationFrame
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
-
 var then = Date.now();
 Reset();
 Main();
-
 startGame();
