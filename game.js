@@ -2,10 +2,11 @@
 
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
-canvas.width = 1000;
-canvas.height = 600;
-// canvas.style = "border: 4px solid black; position:absolute; left: 50%; width: 400px; margin-left: -200px; margin-top: 100px";
-canvas.style = 'left: 50%; margin-left: 8% ';
+canvas.width = 1200;
+canvas.height = 800;
+//canvas.style = "border: 4px solid black; position:absolute; left: 31%; width: 1200px; height: 800px; margin-left: -250px; margin-top: 10px";
+canvas.style = " position:absolute; width: 1400px; height: 900px; margin-top: 50px; margin-left:auto; margin-right:auto; left:0; right:0; ";
+//canvas.style = 'left: 50%; margin-left: 8% ';
 
 document.body.appendChild(canvas);
 
@@ -31,7 +32,7 @@ var seedsImage = new Image();
 seedsImage.onload = function () {
   seedsReady = true;
 };
-seedsImage.src = 'images/seeds.png';
+seedsImage.src = 'images/corn.png';
 
 // Bomb Image
 var bombReady = false;
@@ -39,7 +40,7 @@ var bombImage = new Image();
 bombImage.onload = function () {
   bombReady = true;
 };
-bombImage.src = 'images/bomb.png';
+bombImage.src = 'images/bomb2.png';
 
 var bird = {
   speed: 500 //movement in pixels per second
@@ -50,6 +51,7 @@ var bombArray = [];
 var seeds = {};
 var bombsCaught = false;
 var seedsCaught = 0;
+var playerLife = 3;
 
 // Handle keyboard controls
 var keysDown = {};
@@ -167,24 +169,20 @@ function Render () {
   }
 
 
-  // Score board style
-  ctx.fillStyle = 'rgb(250,250,250';
-  ctx.color = 'white';
-  ctx.font = '30px Georgia';
-  ctx.fontWeight = '400';
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'top';
-  ctx.fillText('Seeds Eaten: ' + seedsCaught, 50, 50);
 
-  // Bombs Caught
-  ctx.fillStyle = 'rgb(250,250,250';
-  ctx.color = 'white';
-  ctx.font = '30px Georgia';
-  // ctx.fontWeight = '400';
-  ctx.textAlign = 'right';
-  ctx.textBaseline = 'top';
-  ctx.fillText('Bomb Caught: ' + bombsCaught, 800, 50);
-}
+  $('h2').text("Food Caught : " + seedsCaught);
+   if (seedsCaught <= 6){
+     $('#Countstatus').text("Status: I could use some food");
+     }
+   else if (seedsCaught < 9)
+   {
+     $('#Countstatus').text("Status: Yums! Could I have more?");
+   }
+   else  if (seedsCaught > 30){
+     $('#Countstatus').text("Status: Thank you for the food!");
+   }
+   $('h3').text('Lives: ' + playerLife);
+ }
 
 // The main game loop
 function Main () {
@@ -200,10 +198,18 @@ function Main () {
 function checkBomb()
 {
   if(bombsCaught){
-    alert("gameover");
+
+$("audio").trigger('play');
+    playerLife--;
+   setTimeout(function () { window.alert("You're left with : " + playerLife + ' lifes'); }, 2000);
+    //window.alert("You're left with : " + playerLife + ' lifes' );
     bombArray = [];
   }
-  console.log(bombsCaught);
+  if(playerLife <= 0){
+    window.alert("You've only one thing to do, and you can't do it well at all!");
+    playerLife = 3;
+    seedsCaught = 0;
+  }
 }
 // Cross-browser support for requestAnimationFrame
 var w = window;
