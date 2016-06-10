@@ -222,6 +222,7 @@ function Main () {
   // Request to do this again ASAP
   requestAnimationFrame(Main);
 }
+// check for bomb (gameOver)
 function checkBomb () {
   if (policeCaught) {
     $('#bomb').trigger('play');
