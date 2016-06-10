@@ -69,7 +69,7 @@ addEventListener('keyup', function (e) {
 // Reset the game when the unicorn eats a seed
 
 function Reset () {
-  // throw the monster somwehere on the screen randomly
+  // throw the police/coins somwehere on the screen randomly
 
   coins.x = 32 + (Math.random() * (canvas.width - 64));
   coins.y = 32 + (Math.random() * (canvas.height - 80));
@@ -79,7 +79,6 @@ function Reset () {
   policeArray.push(bombs);
   keysDown = {};
   UpdatedHealthBar();
-  // healthbar.width("30px");
 }
 
 function startGame () {
@@ -151,7 +150,7 @@ function Update (modifier) {
       unicorn.x = rockRight;
     }
   }
-
+// Pressing R on the keyboard will restart the game
   if (82 in keysDown) {
     flag = true;
     Reset();
@@ -179,7 +178,7 @@ function Update (modifier) {
       policeArray.splice(i); // this is to delete the police out of the array
       policeArray = [];
       checkBomb();
-      Reset();
+    //  Reset(); ( please note that if you put this reset here, an additional spacepolice will keep appearing)
     }
   }
   // You can do the same method without array (But more tedious)
@@ -242,6 +241,7 @@ function checkBomb () {
     playerLife = 3;
     coinCaught = 0;
     keysDown = {};
+    policeArray = [];
   }
 }
 // Cross-browser support for requestAnimationFrame
