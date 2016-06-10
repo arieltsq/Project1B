@@ -7,7 +7,7 @@ var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 400;
-canvas.style = ' position:absolute; width: 600px; height: 400px; margin-top: 30px; margin-left:auto; margin-right:auto; left:0; right:0; ';
+canvas.style = ' position:absolute; width: 600px; height: 400px; margin-top: 20px; margin-left:auto; margin-right:auto; left:0; right:0; ';
 // canvas.style = 'left: 50%; margin-left: 8% ';
 
 document.body.appendChild(canvas);
