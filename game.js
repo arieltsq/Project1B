@@ -1,5 +1,5 @@
 /* Global $ */
-// Create the canvas
+// Creating the canvas
 var healthbar = $('#lifebar');
 var upBtn = $('#UpBtn');
 var healthCounter = window.innerWidth;
@@ -8,7 +8,6 @@ var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 400;
-// canvas.style = "border: 4px solid black; position:absolute; left: 31%; width: 1200px; height: 800px; margin-left: -250px; margin-top: 10px";
 canvas.style = ' position:absolute; width: 600px; height: 400px; margin-top: 30px; margin-left:auto; margin-right:auto; left:0; right:0; ';
 // canvas.style = 'left: 50%; margin-left: 8% ';
 
@@ -22,7 +21,7 @@ bgImage.onload = function () {
 };
 bgImage.src = 'images/bg2.png';
 
-// Bird Images
+// Unicorn Images
 var unicornReady = false;
 var unicornImage = new Image();
 unicornImage.onload = function () {
@@ -30,7 +29,7 @@ unicornImage.onload = function () {
 };
 unicornImage.src = 'images/unicorn.png';
 
-// Seeds Images
+// Coin Images
 var coinReady = false;
 var coinImage = new Image();
 coinImage.onload = function () {
@@ -38,7 +37,7 @@ coinImage.onload = function () {
 };
 coinImage.src = 'images/coin.png';
 
-// Bomb Image
+// Police Image
 var policeReady = false;
 var policeImage = new Image();
 policeImage.onload = function () {
@@ -183,6 +182,7 @@ function Update (modifier) {
       Reset();
     }
   }
+  // You can do the same method without array (But more tedious)
       // if (
       //   unicorn.x <= (bombs.x + 32) &&
       //    bombs.x <= (unicorn.x + 32) && unicorn.y <= (bombs.y + 32) && bombs.y <= (unicorn.y + 32)) {
@@ -193,8 +193,9 @@ function Update (modifier) {
 }
 
     // Draw or rather show everything
-    // We call this in the main function
+    // We call this in the main function to render it
 function Render () {
+  // bgReady , unicornReady , coinReady is asking if image is ready to load on html
   if (bgReady) {
     ctx.drawImage(bgImage, 0, 0);
   }
@@ -204,9 +205,6 @@ function Render () {
   if (coinReady) {
     ctx.drawImage(coinImage, coins.x, coins.y);
   }
-  // if (policeReady) {
-  //   ctx.drawImage(policeImage, bombs.x, bombs.y);
-  // }
   for (var i = 0; i < policeArray.length; i++) {
     ctx.drawImage(policeImage, policeArray[i].x, policeArray[i].y);
   }
