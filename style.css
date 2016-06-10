@@ -82,7 +82,7 @@ h2{
   -webkit-font-smoothing: antialiased;
   font-weight: bolder;
   padding: 10px;
-  /*font-size: 50px;*/
+  font-size: 12px;
   height:100%;
 }
 
@@ -95,7 +95,7 @@ h3{
   margin-top: 50px;
   margin-left: 30px;
   margin-right: 30px;
-  /*font-size: 50px;*/
+  font-size: 12px;
   height:100%;
   font-weight: bolder;
   /*background: rgba(0, 0, 0, 0.4);*/
