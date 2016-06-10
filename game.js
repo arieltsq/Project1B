@@ -176,7 +176,8 @@ function Update (modifier) {
         unicorn.x <= (policeArray[i].x + 32) &&
         policeArray[i].x <= (unicorn.x + 32) && unicorn.y <= (policeArray[i].y + 32) && policeArray[i].y <= (unicorn.y + 32)) {
       policeCaught = true;
-      policeArray.splice(i);
+      policeArray.splice(i); // this is to delete the police out of the array
+      policeArray = [];
       checkBomb();
       Reset();
     }
@@ -230,11 +231,11 @@ function checkBomb () {
     // Slowing down the alert as the bomb sounds take awhile to play
     setTimeout(function () {
       // clear the keys after the alert pops up
+      policeArray = [];
       keysDown = {};
       window.alert("You're left with : " + playerLife + ' lifes');
     }, 1000);
     healthCounter = 1000;
-    policeArray = [];
   }
   if (playerLife <= 0) {
     window.alert("You've only one thing to do, and you can't do it well at all!");
