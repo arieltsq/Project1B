@@ -113,7 +113,7 @@ function UpdatedHealthBar () {
   flag = true;
 }
 
-// setInterval(MinusHealth, 10);
+setInterval(MinusHealth, 10);
 
 // Update game objects
 
