@@ -73,12 +73,15 @@ function Reset () {
 
   coins.x = 32 + (Math.random() * (canvas.width - 64));
   coins.y = 32 + (Math.random() * (canvas.height - 80));
+  keysDown = {};
+  UpdatedHealthBar();
+}
+
+function AddPolice () {
   var bombs = {};
   bombs.x = 32 + (Math.random() * (canvas.width - 64));
   bombs.y = 32 + (Math.random() * (canvas.height - 80));
   policeArray.push(bombs);
-  keysDown = {};
-  UpdatedHealthBar();
 }
 
 function startGame () {
@@ -110,7 +113,7 @@ function UpdatedHealthBar () {
   flag = true;
 }
 
-setInterval(MinusHealth, 10);
+// setInterval(MinusHealth, 10);
 
 // Update game objects
 
@@ -167,6 +170,7 @@ function Update (modifier) {
     $('#coin').trigger('play');
     ++coinCaught;
     healthCounter += 25;
+    AddPolice();
     Reset();
   }
   // Did the unicorn collide with the spacepolice?
@@ -178,7 +182,8 @@ function Update (modifier) {
       policeArray.splice(i); // this is to delete the police out of the array
       policeArray = [];
       checkBomb();
-    //  Reset(); ( please note that if you put this reset here, an additional spacepolice will keep appearing)
+    Reset();
+    // ( please note that if you put this reset here, an additional spacepolice )
     }
   }
   // You can do the same method without array (But more tedious)
@@ -210,7 +215,6 @@ function Render () {
   $('h2').text('Coins stole : ' + coinCaught);
   $('h3').text('Lives: ' + playerLife);
 }
-
     // The main game loop
 function Main () {
   var now = Date.now();
@@ -233,7 +237,7 @@ function checkBomb () {
       policeArray = [];
       keysDown = {};
       window.alert("You're left with : " + playerLife + ' lifes');
-    }, 1000);
+    }, 500);
     healthCounter = 1000;
   }
   if (playerLife <= 0) {
