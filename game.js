@@ -1,7 +1,6 @@
-/* Global $ */
+/* global $ */
 // Creating the canvas
 var healthbar = $('#lifebar');
-var upBtn = $('#UpBtn');
 var healthCounter = window.innerWidth;
 
 var canvas = document.createElement('canvas');
@@ -63,7 +62,7 @@ addEventListener('keydown', function (e) {
   keysDown[e.keyCode] = true;
 }, false);
 
-addEventListener("keyup", function (e) {
+addEventListener('keyup', function (e) {
   delete keysDown[e.keyCode];
 }, false);
 
@@ -115,7 +114,6 @@ function UpdatedHealthBar () {
 setInterval(MinusHealth, 10);
 
 // Update game objects
-var Status = false;
 
 function Update (modifier) {
   if (38 in keysDown) {
@@ -167,11 +165,12 @@ function Update (modifier) {
   if (
     unicorn.x <= (coins.x + 32) &&
     coins.x <= (unicorn.x + 32) && unicorn.y <= (coins.y + 32) && coins.y <= (unicorn.y + 32)) {
-   $('#coin').trigger("play");
+    $('#coin').trigger('play');
     ++coinCaught;
     healthCounter += 25;
     Reset();
   }
+  // Did the unicorn collide with the spacepolice?
   for (var i = 0; i < policeArray.length; i++) {
     if (
         unicorn.x <= (policeArray[i].x + 32) &&
@@ -208,8 +207,8 @@ function Render () {
   for (var i = 0; i < policeArray.length; i++) {
     ctx.drawImage(policeImage, policeArray[i].x, policeArray[i].y);
   }
-   $('h2').text('Coins stole : ' + coinCaught);
-   $('h3').text('Lives: ' + playerLife);
+  $('h2').text('Coins stole : ' + coinCaught);
+  $('h3').text('Lives: ' + playerLife);
 }
 
     // The main game loop
@@ -227,12 +226,13 @@ function checkBomb () {
   if (policeCaught) {
     $('#bomb').trigger('play');
     playerLife--;
+    // Slowing down the alert as the bomb sounds take awhile to play
     setTimeout(function () {
+      // clear the keys after the alert pops up
       keysDown = {};
       window.alert("You're left with : " + playerLife + ' lifes');
     }, 1000);
     healthCounter = 1000;
-    // window.alert("You're left with : " + playerLife + ' lifes' );
     policeArray = [];
   }
   if (playerLife <= 0) {
