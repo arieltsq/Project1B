@@ -7,7 +7,7 @@ var canvas = document.createElement('canvas')
 var ctx = canvas.getContext('2d')
 canvas.width = 600
 canvas.height = 400
-canvas.style = ' position:absolute; width: 600px; height: 400px; margin-left:auto; margin-right:auto; left:0; right:0; '
+canvas.style = ' position:absolute; width: 600px; height: 400px; margin-left:10%; margin-right:10%; left:0; right:0; '
 // canvas.style = 'left: 50%; margin-left: 8% '
 
 document.body.appendChild(canvas)
@@ -202,7 +202,7 @@ function Swipe (modifier) {
   $('canvas').on('swipeleft', function (event) {
 
     console.log('left')
-    unicorn.x -= 4.5 * modifier
+    unicorn.x -= 3 * modifier
     var rockLeft = 0
 
     if (unicorn.x < rockLeft) {
@@ -211,7 +211,7 @@ function Swipe (modifier) {
   })
   $('canvas').on('swiperight', function (event) {
     console.log('right')
-    unicorn.x += 4.5 * modifier
+    unicorn.x += 3 * modifier
     var rockRight = canvas.width - 40
 
     if (unicorn.x > rockRight) {
@@ -219,7 +219,7 @@ function Swipe (modifier) {
     }
   })
   $('canvas').on('swipeup', function (event) {
-    unicorn.y -= 4.5 * modifier
+    unicorn.y -= 3 * modifier
     var rockTop = 0
     if (unicorn.y < rockTop) {
       unicorn.y = rockTop
@@ -227,7 +227,7 @@ function Swipe (modifier) {
   })
 
   $('canvas').on('swipedown', function (event) {
-    unicorn.y += 4.5 * modifier
+    unicorn.y += 3 * modifier
     var rockBottom = canvas.height - 40
     if (unicorn.y > rockBottom) {
       unicorn.y = rockBottom
