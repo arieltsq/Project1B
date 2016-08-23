@@ -2,9 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
+   <meta name="viewport" content="width=700, user-scalable=0" />
   <title>Unicorn the Thief</title>
   <link rel="stylesheet" href="style.css">
   <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+  <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/jquery.event.move.js"></script>
+  <script src="js/jquery.event.swipe.js"></script>
+
   <link rel="icon" type="image/png" href="images/icon.png" />
 </head>
 <body>
@@ -23,21 +29,14 @@
     <!-- This is for JS to update the coin stole -->
     <div id="left_btm">
       <h2></h2>
-  </div>
-  <!-- This is the live status -->
+    </div>
+    <!-- This is the live status -->
     <div id="right_btm">
       <h3></h3>
     </div>
     <audio id="coin" src="Coin.mp3"></audio>
     <audio id="bomb" src="Blast.mp3"></audio>
   </div>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="game.js"></script>
 </body>
 </html>
-<script>
-document.write('<script src="http://'
-+ (location.host || 'localhost').split(':')[0]
-+ ':35729/livereload.js"></'
-+ 'script>')
-</script>
